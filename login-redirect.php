@@ -25,7 +25,14 @@ namespace Stanford\Login_Redirect;
  * @return string url to redirect to
  */
 function fix_hostname( $redirect_to, $requested_redirect_to, $user ) {
+  $bits = parse_url( $redirect_to );
   $url = site_url( parse_url( $redirect_to, PHP_URL_PATH ) );
+  if ( !empty( $bits[ 'query' ] ) ) {
+    $url .= '?' . $bits[ 'query' ];
+  }
+  if ( !empty( $bits[ 'fragment' ] ) ) {
+    $url .= '#' . $bits[ 'fragment' ];
+  }
   return $url;
 }
 add_filter( 'login_redirect', 'Stanford\Login_Redirect\fix_hostname', 99, 3 );
