@@ -4,7 +4,6 @@
  * Description: Some plugins set login redirects to $_SERVER['SERVER_NAME'], which fails on Pantheon servers. Use site_url() instead.
  * Author: JB Christy
  * Author URI: https://www.stanford.edu/site
- * Text Domain: stanvord
  * Version: 1.00
  * License: GPLv2
  */
